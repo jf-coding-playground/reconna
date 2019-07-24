@@ -8,7 +8,12 @@
     "dev": "nodemon ./src/app.js",
     "test": "mocha ./src/**/*.test.js",
     "lint": "eslint . --ext .js",
-    "kill": "killall node"
+    "kill": "killall node",
+    "dock-u": "docker-compose up -d",
+    "dock-l": "docker-compose logs",
+    "dock-d": "docker-compose down",
+    "dock-rm": "docker system prune",
+    "dock-rmv": "docker system prune --volumes"
   },
   "repository": {
     "type": "git",
