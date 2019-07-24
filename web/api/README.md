@@ -1,1 +1,1 @@
-#Contains source code for api application that serves as backbone for project.
+#Contains source code for api application that receives/delivers data from beacon.
