@@ -1,14 +1,17 @@
-const Express = require('express');
-const BodyParser = require('body-parser');
-const Mongo = require('./mongo');
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongo = require('./config/mongo');
 
-const app = Express();
-const db = Mongo();
+const app = express();
+const db = mongo();
 const port = process.env.SERVER_PORT || 8080;
 
+const signupRoute = require('./features/signup/signup.route');
+
 db.connect();
-app.use(BodyParser.json());
-app.use(BodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use('/api/signup', signupRoute);
 
 app.get('/', (req, res) => {
   res.send('Hello world!');

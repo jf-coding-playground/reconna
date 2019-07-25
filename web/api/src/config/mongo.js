@@ -11,6 +11,7 @@ module.exports = () => {
   
   const options = {
     useNewUrlParser: true,
+    useCreateIndex: true,
     reconnectTries: Number.MAX_VALUE,
     reconnectInterval: 500, 
     connectTimeoutMS: 10000,
@@ -19,13 +20,14 @@ module.exports = () => {
   const url = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOSTNAME}:${MONGO_PORT}/${MONGO_DB}?authSource=admin`;
   
   return {
-    connect: () => Mongoose.connect(url, options)
-    .then( function() {
-      console.log(`MongoDB is connected`);
-    })
-    .catch( function(err) {
-      console.log(`An error occurred while connecting to db, Error: ${err.message}`);
-    })
+    connect: async () => {
+      try {
+        await Mongoose.connect(url, options)
+        console.log(`MongoDB is connected`);
+      } 
+      catch (error) {
+        console.log(`An error occurred while connecting to db, Error: ${err.message}`);
+      }
+    }
   }
 }
-
