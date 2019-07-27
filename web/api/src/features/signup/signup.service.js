@@ -1,10 +1,16 @@
 const { userModel, userRepository } = require('../../entities/user');
+const { isValidEmail, isValidPassword } = require('./signup.validation');
 
-module.exports = async ({ email, password }) => {
-  const userExists = await userRepository.find(email);
-  if(userExists) throw new Error('User exists already!');
+module.exports = async (user) => {
+  const { email, password } = user;
 
-  const newUser = new userModel({ email, password });
+  if (!isValidEmail(email)) throw new Error('Invalid email was provided!');
+  if (!isValidPassword(password)) throw new Error('Invalid password provided!');
+
+  const userFound = await userRepository.find(email);
+  if(userFound) throw new Error('User exists already!');
+
+  const newUser = new userModel(user);
 
   return await userRepository.save(newUser);
-}
+};

@@ -6,12 +6,13 @@ const app = express();
 const db = mongo();
 const port = process.env.SERVER_PORT || 8080;
 
-const signupRoute = require('./features/signup/signup.route');
-
 db.connect();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use('/api/signup', signupRoute);
+
+// ROUTES
+app.use('/signup', require('./features/signup/signup.route'));
+app.use('/api/v1/users', require('./features/users/users.route'));
 
 app.get('/', (req, res) => {
   res.send('Hello world!');

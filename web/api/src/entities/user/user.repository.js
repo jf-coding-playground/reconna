@@ -1,16 +1,28 @@
 const mongoose = require('mongoose');
 const userModel = mongoose.model('User');
 
-module.exports = {
-  save: async (user) => {
-    const newUser = new userModel(user);
-    await newUser.save();
+async function save(user) {
+  const newUser = new userModel(user);
+  await newUser.save();
 
-    return newUser;
-  },
-  find: async(email) => {
-    const userFound = await userModel.findOne({ email });
-
-    return userFound;
-  }
+  return newUser;
 }
+
+async function find(email) {
+  const user = await userModel.findOne({ email });
+
+  return user;
+}
+
+async function findAll() {
+  const users = await userModel.find({}).exec();
+  console.log('TCL: findAll -> users', users);
+
+  return users;
+}
+
+module.exports = {
+  save, 
+  find,
+  findAll
+};
