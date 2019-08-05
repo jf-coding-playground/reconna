@@ -1,0 +1,29 @@
+{
+	"extends": [
+		"eslint:recommended",
+		"plugin:react/recommended"
+	],
+	"env": {
+		"browser": true,
+		"es6": true,
+		"mocha": true,
+	},
+	"parserOptions": {
+		"ecmaVersion": 2017,
+		"sourceType": "module"
+	},
+	"rules": {
+		"linebreak-style": [
+			"error",
+			"unix"
+		],
+		"quotes": [
+			"error",
+			"single"
+		],
+		"semi": [
+			"error",
+			"always"
+		]
+	}
+}
