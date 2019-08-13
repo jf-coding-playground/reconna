@@ -5,3 +5,26 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.btn-white {
+  background-color: #fff;
+  border-color: #000;
+  color: #000;
+}
+
+.btn-white:hover {
+  background-color: #ED4C67;
+  border-color: #fff;
+
+}
+
+.btn-black {
+  background-color: #000;
+  border-color: #000;
+  color: #fff;
+}
+
+.btn-black:hover {
+  background-color: #2ed573;
+  border-color: #fff;
+}

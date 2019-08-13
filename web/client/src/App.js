@@ -7,7 +7,7 @@ import {
 import {
   Login,
   Signup
-} from './views';
+} from './features';
 
 function App() {
   return (
